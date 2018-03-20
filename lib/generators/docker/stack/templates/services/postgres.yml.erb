@@ -1,0 +1,13 @@
+volumes:
+  db:
+services:
+  db:
+    image: healthcheck/postgres:alpine
+    volumes:
+      - db:/data
+    environment:
+      - PGDATA=/data
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=d0ck3r
+    ports:
+      - "<%= 5433 + env_offset %>:5432"

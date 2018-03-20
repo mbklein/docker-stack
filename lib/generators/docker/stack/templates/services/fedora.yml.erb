@@ -1,0 +1,9 @@
+volumes:
+  fedora:
+services:
+  fedora:
+    image: nulib/fcrepo4
+    volumes:
+      - fedora:/data
+    ports:
+      - "<%= 8984 + env_offset %>:8080"
