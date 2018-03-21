@@ -8,7 +8,7 @@ module Docker
 
         base.no_tasks do
           def compose_file_path(env = @env)
-            "docker/#{project}-#{env}/docker-compose.yml"
+            ".docker-stack/#{project}-#{env}/docker-compose.yml"
           end
 
           def compose_file_full_path

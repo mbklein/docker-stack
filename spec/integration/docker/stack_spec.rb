@@ -10,8 +10,8 @@ RSpec.describe Docker::Stack do
       @generators = EngineCart.within_test_app { `rails generate | grep docker:stack`.lines.map(&:strip) }
     end
 
-    it "docker:stack:install" do
-      expect(@generators).to include("docker:stack:install")
+    it 'docker:stack:install' do
+      expect(@generators).to include('docker:stack:install')
     end
 
     %w[fedora postgres redis solr].each do |generator_name|

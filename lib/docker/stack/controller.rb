@@ -13,7 +13,7 @@ module Docker
       def initialize(project: self.class.default_project_name, env: nil, cleanup: false, daemon: false)
         env = Rails.env if env.nil?
         project_and_env = [project, env].join('-')
-        @workdir = Rails.root.join('docker', project_and_env)
+        @workdir = Rails.root.join('.docker-stack', project_and_env)
         @dc = ::Docker::Compose::Session.new(dir: @workdir)
         @cleanup = cleanup
         @daemon = daemon
