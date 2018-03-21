@@ -7,7 +7,6 @@ Code: [![Version](https://badge.fury.io/rb/docker-stack.png)](http://badge.fury.
 [![Coverage Status](https://coveralls.io/repos/github/mbklein/docker-stack/badge.svg?branch=master)](https://coveralls.io/github/mbklein/docker-stack?branch=master)
 [![Code Climate](https://codeclimate.com/github/mbklein/docker-stack/badges/gpa.svg)](https://codeclimate.com/github/mbklein/docker-stack)
 [![Dependency Update Status](https://gemnasium.com/mbklein/docker-stack.png)](https://gemnasium.com/mbklein/docker-stack)
-[![Dependency Maintenance Status](https://dependencyci.com/github/mbklein/docker-stack/badge)](https://dependencyci.com/github/mbklein/docker-stack)
 
 Docs: [![Documentation Status](https://inch-ci.org/github/mbklein/docker-stack.svg?branch=master)](https://inch-ci.org/github/mbklein/docker-stack)
 [![API Docs](http://img.shields.io/badge/API-docs-blue.svg)](http://rubydoc.info/gems/docker-stack)
