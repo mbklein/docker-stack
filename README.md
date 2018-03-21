@@ -4,7 +4,6 @@ Rails generators, Rake tasks, and support modules to run dependencies in Docker 
 
 Code: [![Version](https://badge.fury.io/rb/docker-stack.png)](http://badge.fury.io/rb/docker-stack)
 [![Build Status](https://travis-ci.org/mbklein/docker-stack.png?branch=master)](https://travis-ci.org/mbklein/docker-stack)
-[![Coverage Status](https://coveralls.io/repos/github/mbklein/docker-stack/badge.svg?branch=master)](https://coveralls.io/github/mbklein/docker-stack?branch=master)
 [![Code Climate](https://codeclimate.com/github/mbklein/docker-stack/badges/gpa.svg)](https://codeclimate.com/github/mbklein/docker-stack)
 [![Dependency Update Status](https://gemnasium.com/mbklein/docker-stack.png)](https://gemnasium.com/mbklein/docker-stack)
 
