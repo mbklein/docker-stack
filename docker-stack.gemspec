@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'bixby'
   spec.add_development_dependency 'bundler', '~> 1.16'
   spec.add_development_dependency 'byebug'
+  spec.add_development_dependency 'coveralls'
   spec.add_development_dependency 'engine_cart'
   spec.add_development_dependency 'mocha'
   spec.add_development_dependency 'pry-byebug'
