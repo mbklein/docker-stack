@@ -13,6 +13,10 @@ Docs: [![Documentation Status](https://inch-ci.org/github/mbklein/docker-stack.s
 
 Originally written as a drop-in replacement for [`solr_wrapper`](https://github.com/cbeer/solr_wrapper) and [`fcrepo_wrapper`](https://github.com/cbeer/fcrepo_wrapper) to ease development and testing of [Samvera](https://github.com/mbklein/) applications, but with an eye toward adding support for additional services.
 
+## Prerequisites
+
+`Docker::Stack` depends on [Docker](https://docker.com/) for container virtualization. Before using this gem to start or manage support services, please download and install the [Docker Community Edition](https://store.docker.com/search?type=edition&offering=community).
+
 ## Installation
 
 Add this line to your application's Gemfile:
