@@ -110,7 +110,7 @@ module Docker
 
       def warn_inline(message = "\n")
         return unless $-W > 0 # rubocop:disable Style/GlobalVars
-        $stderr.print message # rubocop:disable Style/StderrPuts
+        $stderr.print message
       end
     end
   end
