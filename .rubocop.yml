@@ -1,12 +1,25 @@
 inherit_from: .rubocop_todo.yml
 
+Lint/NestedMethodDefinition:
+  Exclude:
+    - 'lib/generators/docker/stack/service.rb'
+    - 'lib/generators/docker/stack/util.rb'
+
 Metrics/BlockLength:
   Exclude:
     - 'docker-stack.gemspec'
     - 'spec/**/*'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'lib/generators/docker/stack/service.rb'
+    - 'lib/generators/docker/stack/util.rb'
 
 Metrics/LineLength:
   Max: 120
 
 Metrics/MethodLength:
   Max: 15
+  Exclude:
+    - 'lib/generators/docker/stack/service.rb'
+    - 'lib/generators/docker/stack/util.rb'

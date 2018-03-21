@@ -1,14 +1,20 @@
-require 'generators/docker/stack/service_generator'
+require 'generators/docker/stack/service'
 
 module Docker
   module Stack
     module Service
-      class PostgresGenerator < Docker::Stack::ServiceGenerator
-        source_root File.expand_path('../templates', __dir__)
+      class PostgresGenerator < Rails::Generators::Base
+        include Docker::Stack::Service
+
+        desc %(This generator makes the following changes to your application:
+       1. Adds a db service configuration to the docker-compose.yml files.
+       2. Creates a config/database.yml file pointing to the new service.
+       3. Adds the 'pg' gem to the Gemfile.
+  )
 
         def install_service
           copy_file 'config/database.yml', 'config/database.yml'
-          append_to_file 'Gemfile', "gem 'pg'"
+          gem 'pg'
         end
       end
     end

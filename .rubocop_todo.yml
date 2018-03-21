@@ -13,6 +13,8 @@ Style/Documentation:
     - 'lib/docker/stack.rb'
     - 'lib/docker/stack/container.rb'
     - 'lib/docker/stack/controller.rb'
+    - 'lib/generators/docker/stack/util.rb'
+    - 'lib/generators/docker/stack/service.rb'
     - 'lib/generators/docker/stack/install_generator.rb'
     - 'lib/generators/docker/stack/service/fedora_generator.rb'
     - 'lib/generators/docker/stack/service/postgres_generator.rb'
