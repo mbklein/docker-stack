@@ -46,22 +46,23 @@ module Docker
         end
       end
 
-      # rubocop:disable Style/StderrPuts
       def wait_for_services
         Timeout.timeout(120) do
-          $stderr.print 'Waiting up to two minutes for services to become healthy.' if warn?
-          loop do
-            break if status.all? { |v| v[:status] == 'healthy' }
-            $stderr.print '.' if warn?
+          warn_inline 'Waiting up to two minutes for services to become healthy.'
+          until all_healthy?
+            warn_inline '.'
             sleep 2
           end
-          $stderr.puts if warn?
+          warn_inline
         end
         true
       rescue Timeout::Error
         raise 'Timed out waiting for services to become healthy'
       end
-      # rubocop:enable Style/StderrPuts
+
+      def all_healthy?
+        status.all? { |v| v[:status] == 'healthy' }
+      end
 
       def run
         dc.up(detached: @daemon || block_given?)
@@ -107,8 +108,9 @@ module Docker
         Signal.trap('INT', old_trap)
       end
 
-      def warn?
-        $-W > 0 # rubocop:disable Style/GlobalVars
+      def warn_inline(message = "\n")
+        return unless $-W > 0 # rubocop:disable Style/GlobalVars
+        $stderr.print message # rubocop:disable Style/StderrPuts
       end
     end
   end
