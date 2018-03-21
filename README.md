@@ -11,7 +11,7 @@ Docs: [![Documentation Status](https://inch-ci.org/github/mbklein/docker-stack.s
 [![API Docs](http://img.shields.io/badge/API-docs-blue.svg)](http://rubydoc.info/gems/docker-stack)
 [![Apache 2.0 License](http://img.shields.io/badge/APACHE2-license-blue.svg)](./LICENSE.txt)
 
-Originally written as a drop-in replacement for [`solr_wrapper`](https://github.com/cbeer/solr_wrapper) and [`fcrepo_wrapper`](https://github.com/cbeer/fcrepo_wrapper) to ease development and testing of [Samvera](https://github.com/mbklein/) applications, but with an eye toward adding support for additional services.
+Originally written as a drop-in replacement for [`solr_wrapper`](https://github.com/cbeer/solr_wrapper) and [`fcrepo_wrapper`](https://github.com/cbeer/fcrepo_wrapper) to ease development and testing of [Samvera](https://github.com/samvera/) applications, but with an eye toward adding support for additional services.
 
 ## Prerequisites
 
