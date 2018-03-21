@@ -12,11 +12,10 @@ module Docker
 )
 
       def create_stack
-        generate "docker:stack:service:fedora"
-        generate "docker:stack:service:solr"
+        generate 'docker:stack:service:fedora'
+        generate 'docker:stack:service:solr'
         copy_file 'docker.rake', 'lib/tasks/docker.rake'
       end
-
     end
   end
 end

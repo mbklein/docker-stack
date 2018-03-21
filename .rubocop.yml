@@ -1,5 +1,10 @@
 inherit_from: .rubocop_todo.yml
 
+Metrics/BlockLength:
+  Exclude:
+    - 'docker-stack.gemspec'
+    - 'spec/**/*'
+
 Metrics/LineLength:
   Max: 120
 

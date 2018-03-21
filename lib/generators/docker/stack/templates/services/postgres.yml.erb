@@ -10,4 +10,4 @@ services:
       - POSTGRES_USER=docker
       - POSTGRES_PASSWORD=d0ck3r
     ports:
-      - "<%= 5433 + env_offset %>:5432"
+      - "<%= 5433 + port_offset %>:5432"
