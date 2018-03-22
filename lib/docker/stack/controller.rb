@@ -25,11 +25,13 @@ module Docker
         down(cleanup: true)
         images = config['services'].values.map { |conf| conf['image'] }
         images.each do |image_name|
-          image = ::Docker::Image.get(image_name)
-          result = image.remove(prune: true)
-          yield result if block_given?
-        rescue ::Docker::Error::NotFoundError
-          yield %{[{"Skipped":"#{image_name} (image not present)"}]}
+          begin
+            image = ::Docker::Image.get(image_name)
+            result = image.remove(prune: true)
+            yield result if block_given?
+          rescue ::Docker::Error::NotFoundError
+            yield %{[{"Skipped":"#{image_name} (image not present)"}]}
+          end
         end
         ::Docker::Image.prune
       end
@@ -37,10 +39,12 @@ module Docker
       def status
         containers = dc.ps.map(&:id)
         containers.map do |c|
-          container = Container.new(c)
-          container.to_h
-        rescue StandardError
-          { id: c, service: 'unknown', status: 'unknown', started: 'unknown', running: 'unknown' }
+          begin
+            container = Container.new(c)
+            container.to_h
+          rescue StandardError
+            { id: c, service: 'unknown', status: 'unknown', started: 'unknown', running: 'unknown' }
+          end
         end
       end
 
