@@ -1,0 +1,17 @@
+volumes:
+  localstack:
+services:
+  localstack:
+    image: localstack/localstack
+    ports:
+      - "<%= 4772 + port %>:4572"
+    volumes:
+      - localstack:/data
+    environment:
+      SERVICES: s3
+      DATA_DIR: /data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4572/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
