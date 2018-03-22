@@ -14,7 +14,7 @@ module Docker
   )
 
         def install_service
-          copy_file 'config/redis.yml', 'config/redis.yml'
+          template 'config/redis.yml.erb', 'config/redis.yml'
         end
       end
     end

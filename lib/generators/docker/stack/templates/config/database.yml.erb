@@ -1,7 +1,6 @@
 default: &default
   adapter: postgresql
   host: localhost
-  port: <%= Docker::Stack.port_for(:postgres) %>
   encoding: unicode
   pool: 5
   username: docker
@@ -9,14 +8,16 @@ default: &default
 
 development:
   <<: *default
+  port: <%= Docker::Stack.port_for(:postgres, 'development') %>
   database: docker_dev
 
 test:
   <<: *default
+  port: <%%= Rails.env.development? ? <%= Docker::Stack.port_for(:postgres, 'development') %> : <%= Docker::Stack.port_for(:postgres, 'test') %> %>
   database: docker_test
 
 production:
   adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: <%%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
   database: db/production.sqlite3

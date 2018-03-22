@@ -15,7 +15,7 @@ module Docker
   )
 
         def install_service
-          copy_file 'config/solr.yml', 'config/solr.yml'
+          template 'config/solr.yml.erb', 'config/solr.yml'
           directory 'solr'
         end
       end

@@ -14,7 +14,7 @@ module Docker
   )
 
         def install_service
-          copy_file 'config/fedora.yml', 'config/fedora.yml'
+          template 'config/fedora.yml.erb', 'config/fedora.yml'
         end
       end
     end

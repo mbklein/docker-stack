@@ -15,7 +15,7 @@ module Docker
   )
 
         def install_service
-          copy_file 'config/database.yml', 'config/database.yml'
+          template 'config/database.yml.erb', 'config/database.yml'
           gem 'pg'
         end
       end
