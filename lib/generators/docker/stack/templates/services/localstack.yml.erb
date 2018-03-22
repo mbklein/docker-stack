@@ -4,7 +4,7 @@ services:
   localstack:
     image: localstack/localstack
     ports:
-      - "<%= 4772 + port %>:4572"
+      - "<%= 4572 + port %>:4572"
     volumes:
       - localstack:/data
     environment:

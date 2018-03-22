@@ -2,8 +2,8 @@ fedora:
   development: 8984
   test: 8986
 localstack:
-  development: 0
-  test: 200
+  development: 200
+  test: 400
 postgres:
   development: 5433
   test: 5434
