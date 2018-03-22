@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+require 'docker/stack'
 require 'generators/docker/stack/util'
 require 'active_support/core_ext/hash/deep_merge'
 require 'ostruct'
@@ -32,15 +35,11 @@ module Docker
 
           def service_from_template(service)
             source  = File.expand_path(find_in_source_paths("services/#{service}.yml.erb"))
-            context = OpenStruct.new(env: @env, port_offset: port_offset).instance_eval { binding }
+            context = OpenStruct.new(env: @env, port: Docker::Stack.port_for(service)).instance_eval { binding }
             yaml = Thor::Actions::CapturableERB.new(::File.binread(source), nil, '-', '@output_buffer').tap do |erb|
               erb.filename = source
             end.result(context)
             YAML.safe_load(yaml)
-          end
-
-          def port_offset
-            { 'development' => 0, 'test' => 2 }[@env] || 0
           end
         end
       end

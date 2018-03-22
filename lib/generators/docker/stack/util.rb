@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module Docker
   module Stack
     module Util
-      COMPOSE_FILE_VERSION = '3.4'.freeze
+      COMPOSE_FILE_VERSION = '3.4'
 
       def self.included(base)
         base.source_root File.expand_path('templates', __dir__)

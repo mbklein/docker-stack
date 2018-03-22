@@ -1,6 +1,7 @@
 default: &default
   adapter: postgresql
   host: localhost
+  port: <%= Docker::Stack.port_for(:postgres) %>
   encoding: unicode
   pool: 5
   username: docker
@@ -8,12 +9,10 @@ default: &default
 
 development:
   <<: *default
-  port: 5433
   database: docker_dev
 
 test:
   <<: *default
-  port: <%= Rails.env.development? ? 5433 : 5435 %>
   database: docker_test
 
 production:

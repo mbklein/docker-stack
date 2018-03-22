@@ -2,7 +2,7 @@ services:
   redis:
     image: redis:alpine
     ports:
-      - "<%= 6380 + port_offset %>:6379"
+      - "<%= port %>:6379"
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 30s

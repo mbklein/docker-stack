@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe Docker::Stack do
@@ -14,7 +16,7 @@ RSpec.describe Docker::Stack do
       expect(@generators).to include('docker:stack:install')
     end
 
-    %w[fedora postgres redis solr].each do |generator_name|
+    %w[fedora localstack postgres redis solr].each do |generator_name|
       it "docker:stack:service:#{generator_name}" do
         expect(@generators).to include("docker:stack:service:#{generator_name}")
       end

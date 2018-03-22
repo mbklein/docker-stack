@@ -4,7 +4,7 @@ services:
   solr:
     image: solr:7.2-alpine
     ports:
-      - "<%= 8983 + port_offset %>:8983"
+      - "<%= port %>:8983"
     volumes:
       - solr:/opt/solr/server/solr/mycores
       - ../../solr:/solr_config

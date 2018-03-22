@@ -1,5 +1,8 @@
 inherit_from: .rubocop_todo.yml
 
+AllCops:
+  TargetRubyVersion: 2.5
+  
 Lint/NestedMethodDefinition:
   Exclude:
     - 'lib/generators/docker/stack/service.rb'

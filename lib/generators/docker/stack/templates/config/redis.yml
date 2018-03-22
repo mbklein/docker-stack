@@ -1,9 +1,9 @@
 development:
   host: localhost
-  port: 6380
+  port: Docker::Stack.port_for(:redis)
 test:
   host: localhost
-  port: 6381
+  port: Docker::Stack.port_for(:redis)
 production:
   host: <%= ENV['REDIS_HOST'] || 'localhost' %>
   port: <%= ENV['REDIS_PORT'] || 6379 %>
