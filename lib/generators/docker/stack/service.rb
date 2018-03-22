@@ -35,7 +35,7 @@ module Docker
 
           def service_from_template(service)
             source  = File.expand_path(find_in_source_paths("services/#{service}.yml.erb"))
-            context = OpenStruct.new(env: @env, port: Docker::Stack.port_for(service)).instance_eval { binding }
+            context = OpenStruct.new(env: @env, port: Docker::Stack.port_for(service, @env)).instance_eval { binding }
             yaml = Thor::Actions::CapturableERB.new(::File.binread(source), nil, '-', '@output_buffer').tap do |erb|
               erb.filename = source
             end.result(context)
