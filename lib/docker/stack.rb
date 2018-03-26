@@ -21,7 +21,7 @@ module Docker
       end
 
       def env
-        @_env ||= begin
+        @env ||= begin
           ((rails? && Rails.env))
         rescue NoMethodError
           ActiveSupport::StringInquirer.new(
@@ -31,7 +31,7 @@ module Docker
       end
 
       def root
-        @_root ||= begin
+        @root ||= begin
           ((rails? && Rails.root) || Pathname.pwd)
         rescue NoMethodError
           Pathname.pwd

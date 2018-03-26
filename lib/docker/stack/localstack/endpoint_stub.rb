@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'aws-sdk'
+require 'aws-sdk-core'
 
 module Docker
   module Stack
@@ -49,7 +49,9 @@ module Docker
             region: 'us-east-1',
             credentials: Aws::Credentials.new('localstack-key', 'localstack-secret')
           )
-          Seahorse::Client::Base.add_plugin(Plugin)
+          Seahorse::Client::Base.add_plugin(Plugin) unless Seahorse::Client::Base.plugins.include?(Plugin)
+
+          return unless defined?(Aws::S3)
           Aws::S3::Plugins::BucketDns.options.find { |opt| opt.name == :force_path_style }.default = true
         end
       end
