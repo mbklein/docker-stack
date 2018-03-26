@@ -22,9 +22,10 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
+  spec.add_dependency 'actionview'
+  spec.add_dependency 'activesupport'
   spec.add_dependency 'docker-api'
   spec.add_dependency 'docker-compose'
-  spec.add_dependency 'rails', '~> 5.0'
 
   spec.add_development_dependency 'bixby'
   spec.add_development_dependency 'bundler', '~> 1.16'
@@ -33,6 +34,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'engine_cart'
   spec.add_development_dependency 'mocha'
   spec.add_development_dependency 'pry-byebug'
+  spec.add_development_dependency 'railties', '~> 5.0'
   spec.add_development_dependency 'rake', '~> 12.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rubocop'

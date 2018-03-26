@@ -13,7 +13,7 @@ development:
 
 test:
   <<: *default
-  port: <%%= Rails.env.development? ? <%= Docker::Stack.port_for(:postgres, 'development') %> : <%= Docker::Stack.port_for(:postgres, 'test') %> %>
+  port: <%%= Docker::Stack.env.development? ? <%= Docker::Stack.port_for(:postgres, 'development') %> : <%= Docker::Stack.port_for(:postgres, 'test') %> %>
   database: docker_test
 
 production:

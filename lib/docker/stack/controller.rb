@@ -10,12 +10,14 @@ module Docker
 
       def self.default_project_name
         Rails.application.class.parent_name.underscore
+      rescue NoMethodError
+        Docker::Stack.root.basename.to_s
       end
 
       def initialize(project: self.class.default_project_name, env: nil, cleanup: false, daemon: false)
-        env = Rails.env if env.nil?
+        env = Docker::Stack.env if env.nil?
         project_and_env = [project, env].join('-')
-        @workdir = Rails.root.join('.docker-stack', project_and_env)
+        @workdir = Docker::Stack.root.join('.docker-stack', project_and_env)
         @dc = ::Docker::Compose::Session.new(dir: @workdir)
         @cleanup = cleanup
         @daemon = daemon
