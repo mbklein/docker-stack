@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'docker/stack'
 require 'aws-sdk-core'
 
 module Docker
@@ -36,8 +37,8 @@ module Docker
           def endpoint_for(client)
             base_port = PORT_MAP[client.class.parent_name]
             return nil if base_port.nil?
-            base_url = 'http://localhost'
-            offset = Docker::Stack.port_for(:localstack)
+            base_url = ENV['LOCALSTACK_ENDPOINT'] || 'http://localhost'
+            offset = ENV['LOCALSTACK_OFFSET']&.to_i || Docker::Stack.port_for(:localstack)
             base_uri = URI.parse(base_url)
             base_uri.port = base_port + offset
             base_uri.to_s
@@ -49,7 +50,10 @@ module Docker
             region: 'us-east-1',
             credentials: Aws::Credentials.new('localstack-key', 'localstack-secret')
           )
-          Seahorse::Client::Base.add_plugin(Plugin) unless Seahorse::Client::Base.plugins.include?(Plugin)
+          classes_to_stub = [Seahorse::Client::Base] + Seahorse::Client::Base.descendants
+          classes_to_stub.each do |klass|
+            klass.add_plugin(Plugin) unless klass.plugins.include?(Plugin)
+          end
 
           return unless defined?(Aws::S3)
           Aws::S3::Plugins::BucketDns.options.find { |opt| opt.name == :force_path_style }.default = true
