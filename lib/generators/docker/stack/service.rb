@@ -13,7 +13,7 @@ module Docker
 
         base.class_option :env, type: :string, default: 'development,test'
 
-        base.define_method :add_service do
+        base.send(:define_method, :add_service) do
           options[:env].split(/,/).each do |env|
             @env = env
             add_service_for_environment
