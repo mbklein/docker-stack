@@ -9,4 +9,5 @@ before_install:
 script:
   - 'bundle exec rake ci'
 rvm:
-  - 2.5
+  - 2.3.4
+  - 2.4.1
